@@ -1,0 +1,52 @@
+﻿using Gameplay.ShipSystems;
+using UnityEngine;
+
+namespace Gameplay.ShipControllers.CustomControllers
+{
+    public class PlayerShipController : ShipController
+    {
+        bool MouseHeel=false;
+        protected override void ProcessHandling(MovementSystem movementSystem)
+        {
+            if(
+               transform.position.x<GetComponent<CollShip>().limitx||
+               transform.position.x>GetComponent<CollShip>().limitx1
+               )
+            {
+                movementSystem.LateralMovement(Input.GetAxis("Horizontal") * Time.deltaTime);
+                if (MouseHeel) { /*print((Input.mousePosition.x * 0.1f) - 50);*/ transform.position = new Vector3((Input.mousePosition.x*0.1f)-40, -16.7f); }
+            }
+            if(
+               transform.position.x > GetComponent<CollShip>().limitx)
+            {
+                //print("x");
+                transform.position = new Vector3(GetComponent<CollShip>().limitx-2, transform.position.y, transform.position.z);
+            }
+           
+            if(transform.position.x < GetComponent<CollShip>().limitx1
+               )
+            {
+                //print("x1");
+                transform.position = new Vector3(GetComponent<CollShip>().limitx1 + 2, transform.position.y, transform.position.z);
+            }
+
+        }
+      
+        protected override void ProcessFire(WeaponSystem fireSystem)
+        {
+            if (Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(0))
+            {
+                fireSystem.TriggerFire();
+            }
+            if (Input.GetKey(KeyCode.M))
+            {
+                MouseHeel = true;
+            }
+            if (Input.GetKey(KeyCode.N))
+            {
+                MouseHeel = false;
+            }
+        }
+       
+    }
+}
