@@ -59,8 +59,12 @@ namespace Gameplay.Weapons
         {
             _battleIdentity = battleIdentity;
         }
-        
-        
+
+        bool isplayer = false;
+        public void setpl1()
+        {
+            isplayer = true;
+        }
         public void TriggerFire()
         {
             if (!_readyToFire)
@@ -68,7 +72,7 @@ namespace Gameplay.Weapons
             _projectile = projectiles[wpnum];
             var proj = Instantiate(_projectile, _barrel.position, _barrel.rotation);
             proj.Init(_battleIdentity);
-            proj.tag = "Player";
+            if (isplayer) proj.tag = "Player";
             StartCoroutine(Reload(_cooldown));
         }
 

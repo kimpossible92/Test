@@ -5,6 +5,9 @@ using UnityEngine;
 public class UIPlay : MonoBehaviour
 {
     public static bool isInvincible = false; public static float timeSpentInvincible;
+    [SerializeField] UnityEngine.UI.Button play;
+    [SerializeField] UnityEngine.UI.Button pause;
+    [SerializeField] UnityEngine.UI.Button newgame;
     private void Awake()
     {
         foreach(var pi in FindObjectsOfType<Gameplay.Spawners.Spawner>())
@@ -21,7 +24,7 @@ public class UIPlay : MonoBehaviour
             pi.StartSpawn();
         }
         FindObjectOfType<CollShip>().NewStart(); isInvincible = true;
-        GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false);
+        GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false); pse = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -49,13 +52,59 @@ public class UIPlay : MonoBehaviour
         //    }
         //}
     }
+    public void Pause1()
+    {
+        Time.timeScale = 0;
+        pse = true;
+    }
+    public void Resume()
+    {
+
+        Time.timeScale = 1;
+        play.gameObject.SetActive(false);
+        newgame.gameObject.SetActive(false);
+        pse = false;
+    }
+    public void Reset()
+    {
+        foreach (var pi in FindObjectsOfType<EnemyShipController>())
+        {
+            Destroy(pi.gameObject);
+        }
+        foreach (var pi in FindObjectsOfType<Gameplay.Spawners.Spawner>())
+        {
+            pi.StopSpawn();
+        }
+        Time.timeScale = 1;
+        score = 0;
+        foreach (var pi in FindObjectsOfType<Gameplay.Spawners.Spawner>())
+        {
+            pi.StartSpawn();
+        }
+        FindObjectOfType<CollShip>().NewStart(); isInvincible = true;
+        play.gameObject.SetActive(false);
+        newgame.gameObject.SetActive(false);
+        GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false);
+        pse = false;
+    }
     public void addScore(int sc)
     {
         score += sc;
     }
+    bool pse = false;
     private void OnGUI()
     {
         ScoreUI();
+        if (!pse)
+        {
+            pause.gameObject.SetActive(true);
+        }
+        else
+        {
+            pause.gameObject.SetActive(false);
+            play.gameObject.SetActive(true);
+            newgame.gameObject.SetActive(true);
+        }
     }
     void ScoreUI()
     {

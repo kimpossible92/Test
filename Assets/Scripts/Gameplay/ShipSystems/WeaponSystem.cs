@@ -48,13 +48,15 @@ namespace Gameplay.ShipSystems
         {
             if (tag == "Player")
             {
-                if (ll1 == true) _weapons.ForEach(w => w.TriggerFire());
+                _weapons.ForEach(w => w.setpl1());
+                if (ll1 == true) { _weapons.ForEach(w => w.TriggerFire()); }
                 if (ll1 == false)
                 {
                     _weapons[0].TriggerFire();
                     _weapons[1].TriggerFire();
                 }
             }
+            else if (tag == "bonus") { }
             else { _weapons.ForEach(w => w.TriggerFire()); }
         }
         public void SetNewSpeed()
