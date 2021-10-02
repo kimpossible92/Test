@@ -14,6 +14,7 @@ namespace Gameplay.ShipSystems
         public void loadMove()
         {
             _lateralMovementSpeed = 250.0f;
+            Invoke("oldmove", 8.0f);
         }
         public void LateralMovement(float amount)
         {
@@ -31,7 +32,10 @@ namespace Gameplay.ShipSystems
             if (tag == "bonus") { if (transform.position.y < -16) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
             else Move(amount * _longitudinalMovementSpeed, Vector3.left);
         }
-
+        private void oldmove()
+        {
+            _lateralMovementSpeed = 50.0f;
+        }
         private void Move(float amount, Vector3 axis)
         {
             transform.Translate(amount * axis.normalized);

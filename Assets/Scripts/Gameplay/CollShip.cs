@@ -95,8 +95,9 @@ public class CollShip : MonoBehaviour
         }
         if (collision.gameObject.tag == "bonus")
         {
-            if (collision.GetComponent<Spaceship>().bonusRead == 0) { life += 30; Destroy(collision.gameObject); }
+            if (collision.GetComponent<Spaceship>().bonusRead == 0) { life += 20; Destroy(collision.gameObject); }
             if (collision.GetComponent<Spaceship>().bonusRead == 1) { GetComponent<MovementSystem>().loadMove(); Destroy(collision.gameObject); }
+            if (collision.GetComponent<Spaceship>().bonusRead == 2) { GetComponent<WeaponSystem>().SetNewSpeed(); Destroy(collision.gameObject); }
         }
     }
 }

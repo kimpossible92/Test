@@ -20,7 +20,7 @@ public class EnemyShipController : ShipController
     protected override void ProcessHandling(MovementSystem movementSystem)
     {
         if (anotherMovement == 1) { movementSystem.LateralMovement(Time.deltaTime); }
-        if (anotherMovement == -1) { movementSystem.HorizontalMovement(Time.deltaTime); }
+        else if (anotherMovement == -1) { movementSystem.HorizontalMovement(Time.deltaTime); }
         else if (anotherMovement == -2) { }
         else { movementSystem.LongitudinalMovement(Time.deltaTime); }
     }

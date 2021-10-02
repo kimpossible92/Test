@@ -38,7 +38,15 @@ namespace Gameplay.Weapons
                 wpnum = 0;
             }
         }
-
+        public void newCooldown()
+        {
+            _cooldown = 0.001f;
+            Invoke("old", 8.0f);
+        }
+        private void old()
+        {
+            _cooldown = 0.1f;
+        }
         public void setwp2()
         {
             wpnum = 2;

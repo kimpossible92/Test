@@ -24,7 +24,7 @@ namespace Gameplay.ShipSystems
                 ll1 = false;
             }
         }
-        public void setRocketOrBeam(){ _weapons.ForEach(w => w.setwp());}
+        public void setRocketOrBeam() { _weapons.ForEach(w => w.setwp()); }
         public void setBeam() { _weapons.ForEach(w => w.setwp2()); }
         public void Init(UnitBattleIdentity battleIdentity)
         {
@@ -57,6 +57,9 @@ namespace Gameplay.ShipSystems
             }
             else { _weapons.ForEach(w => w.TriggerFire()); }
         }
-
+        public void SetNewSpeed()
+        {
+            _weapons.ForEach(w => w.newCooldown());
+        }
     }
 }

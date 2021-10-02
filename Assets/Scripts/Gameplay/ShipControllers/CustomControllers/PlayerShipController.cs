@@ -34,9 +34,11 @@ namespace Gameplay.ShipControllers.CustomControllers
       
         protected override void ProcessFire(WeaponSystem fireSystem)
         {
-            if (Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.Space)|| Input.GetMouseButton(0))
             {
                 fireSystem.TriggerFire();
+                var source = GetComponent<AudioSource>();
+                if(source !=null)source.PlayOneShot(source.clip);
             }
             if (Input.GetKey(KeyCode.M))
             {
