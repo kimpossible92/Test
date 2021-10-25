@@ -23,6 +23,10 @@ public class UIPlay : MonoBehaviour
         {
             pi.StartSpawn();
         }
+        foreach (var pi in FindObjectsOfType<Road>())
+        {
+            pi.StSpawn();
+        }
         FindObjectOfType<CollShip>().NewStart(); isInvincible = true;
         GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false); pse = false;
     }
@@ -75,11 +79,19 @@ public class UIPlay : MonoBehaviour
         {
             pi.StopSpawn();
         }
+        foreach (var pi in FindObjectsOfType<Road>())
+        {
+            pi.StopSpawn();
+        }
         Time.timeScale = 1;
         score = 0;
         foreach (var pi in FindObjectsOfType<Gameplay.Spawners.Spawner>())
         {
             pi.StartSpawn();
+        }
+        foreach (var pi in FindObjectsOfType<Road>())
+        {
+            pi.StSpawn();
         }
         FindObjectOfType<CollShip>().NewStart(); isInvincible = true;
         play.gameObject.SetActive(false);
