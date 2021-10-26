@@ -49,7 +49,7 @@ namespace Gameplay.Spaceships
             if (lvllive <= 0) {
                 int randBonus = UnityEngine.Random.Range(0, 5);
                 if (randBonus == 0) { tag = "bonus"; bonustype = UnityEngine.Random.Range(0, bonusSprites.Length); gameObject.transform.Find("Hull").GetComponent<SpriteRenderer>().sprite = bonusSprites[bonustype]; }
-                else { FindObjectOfType<UIPlay>().addScore(UnityEngine.Random.Range(5,15)); GetComponent<EnemySp>().GetSpawner.lvlplus(); Destroy(gameObject); }
+                else { FindObjectOfType<UIPlay>().addScore(200); GetComponent<EnemySp>().GetSpawner.lvlplus(); Destroy(gameObject); }
             }
         }
     }

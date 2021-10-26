@@ -1077,7 +1077,7 @@ MonoBehaviour:
   - {fileID: 1763598004162611666, guid: c21e2d51fd27b874a8ac429ad08c1c19, type: 3}
   newcorm: {fileID: 1763598004162611666, guid: c21e2d51fd27b874a8ac429ad08c1c19, type: 3}
   _spawnPeriodRange: {x: 6, y: 12}
-  _spawnDelayRange: {x: 0, y: 15}
+  _spawnDelayRange: {x: 0, y: 12}
   MoveOnSightLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   - {fileID: 1763598004162611666, guid: c21e2d51fd27b874a8ac429ad08c1c19, type: 3}
   newcorm: {fileID: 1763598004162611666, guid: c21e2d51fd27b874a8ac429ad08c1c19, type: 3}
   _spawnPeriodRange: {x: 6, y: 12}
-  _spawnDelayRange: {x: 0, y: 15}
+  _spawnDelayRange: {x: 0, y: 12}
   MoveOnSightLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2478,7 +2478,7 @@ MonoBehaviour:
   - {fileID: 1763598004162611666, guid: c21e2d51fd27b874a8ac429ad08c1c19, type: 3}
   newcorm: {fileID: 1763598004162611666, guid: c21e2d51fd27b874a8ac429ad08c1c19, type: 3}
   _spawnPeriodRange: {x: 6, y: 12}
-  _spawnDelayRange: {x: 0, y: 15}
+  _spawnDelayRange: {x: 0, y: 12}
   MoveOnSightLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2973,6 +2973,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1623967835}
     m_Modifications:
+    - target: {fileID: 1803373727331063824, guid: db160e65d2bc1c043828d51dfbc352da,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2540544495500081184, guid: db160e65d2bc1c043828d51dfbc352da,
         type: 3}
       propertyPath: m_IsTrigger

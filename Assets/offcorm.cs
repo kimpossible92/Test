@@ -57,7 +57,7 @@ public class offcorm : Projectile
     {
         if (gameObject.tag == "enemy" && collision.gameObject.tag == "Player")
         {
-            if (gameObject.tag == "enemy" && collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
                 if (transform.localScale.x == 1) { FindObjectOfType<Road>().addScore(100); }
                 if (transform.localScale.x == 2) { FindObjectOfType<Road>().addScore(50); }
