@@ -14,7 +14,7 @@ namespace Gameplay.ShipControllers.CustomControllers
                )
             {
                 movementSystem.LateralMovement(Input.GetAxis("Horizontal") * Time.deltaTime);
-                if (MouseHeel) { /*print((Input.mousePosition.x * 0.1f) - 50);*/ transform.position = new Vector3((Input.mousePosition.x*0.1f)-40, -16.7f); }
+                if (MouseHeel) { /*print((Input.mousePosition.x * 0.1f) - 50);*/ transform.position = new Vector3((Input.mousePosition.x*0.1f)-40, transform.position.y, transform.position.z); }
             }
             if(
                transform.position.x > GetComponent<CollShip>().limitx)
