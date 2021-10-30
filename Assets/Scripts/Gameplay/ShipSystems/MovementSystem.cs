@@ -18,18 +18,18 @@ namespace Gameplay.ShipSystems
         }
         public void LateralMovement(float amount)
         {
-            if (tag == "bonus") { if (transform.position.y < -16) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
+            if (tag == "bonus") { if (transform.position.y < -5.2f) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
             else Move(amount * _lateralMovementSpeed, Vector3.right);
         }
 
         public void LongitudinalMovement(float amount)
         {
-            if (tag == "bonus") { if (transform.position.y < -16) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
+            if (tag == "bonus") { if (transform.position.y < -5.2f) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
             else { Move(amount * _longitudinalMovementSpeed, Vector3.up); }
         }
         public void HorizontalMovement(float amount)
         {
-            if (tag == "bonus") { if (transform.position.y < -16) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
+            if (tag == "bonus") { if (transform.position.y < -5.2f) { } else { Move(amount * _longitudinalMovementSpeed, Vector3.up); } }
             else Move(amount * _longitudinalMovementSpeed, Vector3.left);
         }
         private void oldmove()

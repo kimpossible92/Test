@@ -5,8 +5,43 @@ using Gameplay.Helpers;
 using Gameplay.Weapons;
 using Gameplay.Weapons.Projectiles;
 
-public class offcorm : Projectile
+public class offcorm : ProjectilePool
 {
+    #region Data
+    List<ProjectilePool> objects;
+    Transform objectsParent;
+    #endregion
+    void AddObject(ProjectilePool sample, Transform objects_parent)
+    {
+        GameObject temp = GameObject.Instantiate(sample.gameObject);
+        temp.name = sample.name;
+        temp.transform.SetParent(objects_parent);
+        objects.Add(temp.GetComponent<ProjectilePool>());
+        if (temp.GetComponent<Animator>())
+            temp.GetComponent<Animator>().StartPlayback();
+        temp.SetActive(false);
+    }
+    public void Initialize(int count, ProjectilePool sample, Transform objects_parent)
+    {
+        objects = new List<ProjectilePool>(); //инициализируем List
+        objectsParent = objects_parent; //инициализируем локальную переменную для последующего использования
+        for (int i = 0; i < count; i++)
+        {
+            AddObject(sample, objects_parent); //создаем объекты до указанного количества
+        }
+    }
+    public ProjectilePool GetObject()
+    {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            if (objects[i].gameObject.activeInHierarchy == false)
+            {
+                return objects[i];
+            }
+        }
+        AddObject(objects[0], objectsParent);
+        return objects[objects.Count - 1];
+    }
     [SerializeField] int color;
     public Vector3 strt;
     public int Color { get => color; set => color = value; }
@@ -29,7 +64,7 @@ public class offcorm : Projectile
         //       if (FindObjectOfType<Road>().getpause()) return;
         //if (tag == "corm")
         //{
-            transform.Translate(new Vector3(0.08f * pos2, -0.08f, 0));
+        transform.Translate(new Vector3(0.08f * pos2, -0.08f, 0));
         //}
         if (transform.position.x > 50)
         {
@@ -53,16 +88,19 @@ public class offcorm : Projectile
     {
         throw new System.NotImplementedException();
     }
+    [SerializeField] int easy = 20;
+    [SerializeField] int medium = 50;
+    [SerializeField] int hard = 100;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (gameObject.tag == "enemy" && collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.tag == "Player")
             {
-                if (transform.localScale.x == 1) { FindObjectOfType<Road>().addScore(100); }
-                if (transform.localScale.x == 2) { FindObjectOfType<Road>().addScore(50); }
-                if (transform.localScale.x == 3) { FindObjectOfType<Road>().addScore(20); }
-                if (transform.localScale.x == 7) { FindObjectOfType<Road>().addScore(20); }
+                if (transform.localScale.x == 1) { FindObjectOfType<Road>().addScore(hard); }
+                if (transform.localScale.x == 2) { FindObjectOfType<Road>().addScore(medium); }
+                if (transform.localScale.x == 3) { FindObjectOfType<Road>().addScore(easy); }
+                if (transform.localScale.x == 7) { FindObjectOfType<Road>().addScore(easy); }
             }
             if (transform.localScale.x == 2)
             {

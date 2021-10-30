@@ -4,9 +4,14 @@ using UnityEngine;
 
 namespace Gameplay.Weapons.Projectiles
 {
-    public abstract class Projectile : MonoBehaviour, IDamageDealer
+    public abstract class ProjectilePool : MonoBehaviour, IDamageDealer
     {
-
+        #region Interface
+        public void ReturnToPool()
+        {
+            gameObject.SetActive(false);
+        }
+        #endregion
         [SerializeField]
         private float _speed;
 

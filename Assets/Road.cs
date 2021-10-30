@@ -146,6 +146,7 @@ public class Road : MonoBehaviour
         worm.transform.localScale = new Vector3(numScale, numScale, numScale);
         GetOffcorms.Add(worm.GetComponent<offcorm>());
         worm.GetComponent<offcorm>().strt = worm.transform.position;
+        PoolManager.GetObject(worm.name, worm.transform.position, worm.transform.rotation);
         return worm;
     }
     public IEnumerator cormSpawn()

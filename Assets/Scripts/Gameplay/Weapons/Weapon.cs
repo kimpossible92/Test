@@ -8,9 +8,9 @@ namespace Gameplay.Weapons
     {
 
         [SerializeField]
-        private Projectile _projectile;
+        private ProjectilePool _projectile;
         [SerializeField]
-        private Projectile[] projectiles;
+        private ProjectilePool[] projectiles;
         int wpnum;
         [SerializeField]
         private Transform _barrel;

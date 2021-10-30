@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Gameplay.Weapons.Projectiles;
 using UnityEngine;
 
-public class LaserBeam : Projectile
+public class LaserBeam : ProjectilePool
 {
     protected override void Move(float speed)
     {
