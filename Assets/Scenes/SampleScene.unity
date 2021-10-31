@@ -3070,6 +3070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6910651213495973518, guid: db160e65d2bc1c043828d51dfbc352da,
         type: 3}
+      propertyPath: _cooldown
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910651213495973518, guid: db160e65d2bc1c043828d51dfbc352da,
+        type: 3}
       propertyPath: projectiles.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3091,6 +3096,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5422155329816343619, guid: e558f673a3d07b84e88875feb5e05a20,
         type: 3}
+    - target: {fileID: 8983208217998367586, guid: db160e65d2bc1c043828d51dfbc352da,
+        type: 3}
+      propertyPath: _cooldown
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 8983208217998367586, guid: db160e65d2bc1c043828d51dfbc352da,
         type: 3}
       propertyPath: projectiles.Array.size

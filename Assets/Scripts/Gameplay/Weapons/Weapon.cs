@@ -40,7 +40,7 @@ namespace Gameplay.Weapons
         }
         public void newCooldown()
         {
-            _cooldown = 0.001f;
+            //_cooldown = 0.33f;
             Invoke("old", 8.0f);
         }
         private void old()
@@ -72,7 +72,7 @@ namespace Gameplay.Weapons
             _projectile = projectiles[wpnum];
             var proj = Instantiate(_projectile, _barrel.position, _barrel.rotation);
             proj.Init(_battleIdentity);
-            if (isplayer) proj.tag = "Player";
+            if (isplayer) { proj.tag = "Player"; proj.GetComponent<SpriteRenderer>().color = Color.green; }
             StartCoroutine(Reload(_cooldown));
         }
 
