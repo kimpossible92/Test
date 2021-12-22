@@ -20,7 +20,7 @@ public struct SpawnGroup
         return base.ToString();
     }
 }
-public class Prog : NetworkBehaviour
+public class Projectiles : NetworkBehaviour
 {
     public NetworkConnection Author;
     [SerializeField]
@@ -35,7 +35,9 @@ public class Prog : NetworkBehaviour
     public SelectSpawn selectSpawn;
     NetworkClient myClient;
     [SerializeField]
-    public GameObject unitPrefab;
+    private GameObject unitPrefab;
+    [SerializeField]
+    private GameObject[] unitPrefabs;
     bool unspawn = false;
     [SyncVar]
     public int sec = 0;
@@ -241,12 +243,14 @@ public class Prog : NetworkBehaviour
     [Command]
     void CmdSpawn()
     {
+
         GameObject worm = MonoBehaviour.Instantiate(this.unitPrefab) as GameObject;
         NetworkIdentity wormId = this.GetComponent<NetworkIdentity>();
         NetworkServer.SpawnWithClientAuthority(worm, this.connectionToClient);
         wList.Add(worm);
         new WaitForSeconds(0.001f);
         RpcSpawn(worm);
+
     }
     [ClientRpc]
     void RpcSpawn(GameObject w)

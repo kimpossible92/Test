@@ -8,6 +8,8 @@ public class NetSide : NetworkManager {
     static public NetSide networkthis;
     [SerializeField]
     protected MySide myside;
+    [SerializeField]
+    protected Wirm[] wirms;
     public bool StartLan = false;
     public string PlayScene;
     public delegate void NetworkServerDisconnectHandler();
@@ -94,7 +96,9 @@ public class NetSide : NetworkManager {
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
         StartLan = true;
-        MySide newplayer = Instantiate<MySide>(myside);
+        MySide newplayer = Instantiate(myside);
+        //if (newplayer.GetComponent<ProjectileGO>()!=null)
+        //    newplayer.GetComponent<ProjectileGO>().SetPlayerId(conn.connectionId);
         DontDestroyOnLoad(newplayer);
         NetworkServer.AddPlayerForConnection(conn, newplayer.gameObject, playerControllerId);
         if (conn.playerControllers[0].unetView.isServer)

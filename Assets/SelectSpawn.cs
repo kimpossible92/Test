@@ -4,7 +4,12 @@ using UnityEngine.Networking;
 using System.Collections.Generic;
 
 public class SelectSpawn : NetworkBehaviour {
-    public Prog isLocalpl
+    public Projectiles isLocalpl
+    {
+        get;
+        set;
+    }
+    public ProjectileGO isLocalplayer
     {
         get;
         set;
@@ -14,8 +19,16 @@ public class SelectSpawn : NetworkBehaviour {
         base.OnStartLocalPlayer();
         if (isLocalPlayer)
         {
-            this.GetComponent<Prog>().enabled = true;
-            isLocalpl = this.GetComponent<Prog>();
+            if (this.GetComponent<Projectiles>() != null)
+            {
+                this.GetComponent<Projectiles>().enabled = true;
+                isLocalpl = this.GetComponent<Projectiles>();
+            }
+            if (this.GetComponent<ProjectileGO>() != null)
+            {
+                this.GetComponent<ProjectileGO>().enabled = true;
+                isLocalplayer = this.GetComponent<ProjectileGO>();
+            }
         }
     }
 }

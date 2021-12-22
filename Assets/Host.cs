@@ -185,7 +185,6 @@ public class Host : NetworkMigrationManager {
                     {
                         repick = false;
                     }
-
                 }
                 if (NetworkServer.active)
                 {
@@ -304,10 +303,10 @@ public class Host : NetworkMigrationManager {
             stopFDay = true;
             foreach (GameObject players in objmiration)
             {
-                players.GetComponent<Prog>().sec = 0;
-                players.GetComponent<Prog>().disconnectplayer = true;
-                StartCoroutine(players.GetComponent<Prog>().FDay());
-                StartCoroutine(players.GetComponent<Prog>().afterplayerdisconect());
+                players.GetComponent<Projectiles>().sec = 0;
+                players.GetComponent<Projectiles>().disconnectplayer = true;
+                StartCoroutine(players.GetComponent<Projectiles>().FDay());
+                StartCoroutine(players.GetComponent<Projectiles>().afterplayerdisconect());
             }
             this.SendPeerInfo();
         }
@@ -322,10 +321,10 @@ public class Host : NetworkMigrationManager {
             }
             foreach (GameObject players in objmiration)
             {
-                players.GetComponent<Prog>().sec = 0;
-                players.GetComponent<Prog>().disconnectplayer = true;
-                StartCoroutine(players.GetComponent<Prog>().FDay());
-                StartCoroutine(players.GetComponent<Prog>().afterplayerdisconect());
+                players.GetComponent<Projectiles>().sec = 0;
+                players.GetComponent<Projectiles>().disconnectplayer = true;
+                StartCoroutine(players.GetComponent<Projectiles>().FDay());
+                StartCoroutine(players.GetComponent<Projectiles>().afterplayerdisconect());
             }
         }
     }

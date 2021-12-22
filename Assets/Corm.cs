@@ -10,10 +10,10 @@ public class Corm : NetworkBehaviour
         if (this.isServer)
         {
             int[] randX;
-            randX = new int[29];
-            for (int i = 0; i < 29; i++)
+            randX = new int[15];
+            for (int i = 0; i < 15; i++)
             {
-                randX[i] = i - 14;
+                randX[i] = i - 7;
             }
             int[] randY;
             randY = new int[15];

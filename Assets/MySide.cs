@@ -47,7 +47,8 @@ public class MySide : NetworkBehaviour {
     {
         ((NetSide)NetworkManager.singleton).RemoveClientHandler(MyReconn);
         ((NetSide)NetworkManager.singleton).RemoveClientConnect(Connec);
-        GetComponent<Prog>().serveractive = false;
+        if(GetComponent<Projectiles>()!=null) GetComponent<Projectiles>().serveractive = false;
+        else { GetComponent<ProjectileGO>().serveractive = false; }
     }
     public void Client()
     {
