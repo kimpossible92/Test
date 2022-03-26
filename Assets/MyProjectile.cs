@@ -47,6 +47,7 @@ public class MyProjectile : MonoBehaviour
     List<GameObject> enemies=new List<GameObject>();
     void _Spawn()
     {
+        if (SetObject != null) { Destroy(SetObject);SetObject = null; }
         List<Vector3> vector3s = new List<Vector3>();
         GameObject worm = MonoBehaviour.Instantiate(this.unitPrefabs[Random.Range(0, unitPrefabs.Length)], new Vector3(1, 0, 0), Quaternion.identity) as GameObject;
         SetObject = worm;
@@ -77,7 +78,8 @@ public class MyProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (SetObject != null) { if (SetObject.GetComponent<MyObect>().GetFull()) { buttonPlay.gameObject.SetActive(true); } else { buttonPlay.gameObject.SetActive(false); myPoint = SetObject.transform.position; } }
+        else { buttonPlay.gameObject.SetActive(true); }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             positionStart = Input.mousePosition;
@@ -97,6 +99,7 @@ public class MyProjectile : MonoBehaviour
         Ymove = Input.GetAxis("Vertical");
         if (SetObject != null)
         {
+           
             if (GetImage[0].GetComponent<JoyButton>().Pressed) { SetObject.GetComponent<MyObect>().setHead(3); }
             if (GetImage[1].GetComponent<JoyButton>().Pressed) { SetObject.GetComponent<MyObect>().setHead(4); }
             if (GetImage[2].GetComponent<JoyButton>().Pressed) { SetObject.GetComponent<MyObect>().setHead(1); }
@@ -141,9 +144,7 @@ public class MyProjectile : MonoBehaviour
         }
         else { 
             speed1 = 0.3f;
-            if (SetObject != null) { buttonPlay.gameObject.SetActive(false); myPoint = SetObject.transform.position; }
-            else if (SetObject != null&&SetObject.GetComponent<MyObect>().GetFull()) { buttonPlay.gameObject.SetActive(true); }
-            else { buttonPlay.gameObject.SetActive(true); }
+            
         }
         if (SetObject != null)
         {

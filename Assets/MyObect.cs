@@ -38,7 +38,7 @@ public class MyObect : MonoBehaviour
         {
             transform.position = new Vector3(-16, transform.position.y, transform.position.z);
         }
-        if (transform.position.y < -25)
+        if (transform.position.y < -6)
         {
             transform.position = new Vector3(transform.position.x, 10, transform.position.z);
         }
@@ -169,7 +169,7 @@ public class MyObect : MonoBehaviour
     }
     public bool GetFull()
     {
-        if (GetBlocks.Count() > 350)
+        if (GetBlocks.Count() > 240)
         {
             score++;
             return true;
@@ -189,7 +189,7 @@ public class MyObect : MonoBehaviour
     {
         if (coll.gameObject.GetComponent<Block>()!=null)
         {
-            GetBlocks.Add(coll.gameObject);
+            if (!GetBlocks.Contains(coll.gameObject)) { GetBlocks.Add(coll.gameObject); }
             if (wCounter < 8) { addmove = 1; }
             if (coll.gameObject.GetComponent<Block>() != null)
             {
