@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 
 public class Wirm : NetworkBehaviour
 {
@@ -66,11 +67,13 @@ public class Wirm : NetworkBehaviour
         if (isServer) { xpos = 40; }
         GUI.Label(new Rect(xpos, ypos, 140, 20), score.ToString());
     }
+    [SerializeField] private List<GameObject> GetBlocks = new List<GameObject>();
     void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "corm"|| coll.gameObject.tag == "rub")
         {
             score++;
+            //GetBlocks.Add(coll.gameObject);
         }
     }
 }

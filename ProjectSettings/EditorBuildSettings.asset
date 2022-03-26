@@ -6,15 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/inCubeSphere.unity
-    guid: 5468e7eaf81e9aa4dab3c0fabce7750e
-  - enabled: 1
-    path: Assets/inCubeSphereLocal.unity
+    path: Assets/inCubeLocal.unity
     guid: c1a42d43730e06e44821cc369757d361
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: efc9cbdbb5b98d8409fbd56237f03624
-  - enabled: 0
-    path: Assets/LobbyScene.unity
-    guid: cfc7271e2b14a824e9ab924a0f4f956a
   m_configObjects: {}
